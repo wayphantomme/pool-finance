@@ -1,118 +1,56 @@
-# Pool-Finance
+# Pool Finance
 
-Next.js starter with Tailwind CSS, `@solana/react-hooks`, and an Anchor vault program example.
+A modern Solana dApp for token swaps and portfolio management, built with Next.js and integrated with Jupiter Aggregator.
 
-## Getting Started
+## 🚀 Features
 
-```shell
-npx -y create-solana-dapp@latest -t solana-foundation/templates/kit/Pool-Finance
-```
+- **Token Swap**: Seamless SOL ⇄ USDC swaps using Jupiter Quote API v6.
+- **Real-Time Pricing**: Integrated with Pyth Network oracle for live SOL/USDC price feeds.
+- **Portfolio Dashboard**: View your SOL and USDC balances with a premium, glassmorphism-inspired UI.
+- **SOL Vault**: Interact with a dedicated Solana smart contract (Vault) to deposit and withdraw SOL.
+- **Native Transfers**: Securely send SOL to any destination address.
+- **Wallet Integration**: Supports Phantom and Solflare via the Solana Wallet Adapter.
 
-```shell
-npm install   # Builds program and generates client automatically
-npm run dev
-```
+## 🛠 Tech Stack
 
-Open [http://localhost:3000](http://localhost:3000), connect your wallet, and interact with the vault on devnet.
+- **Frontend**: Next.js 14 (App Router)
+- **Styling**: Tailwind CSS with custom Glassmorphism effects
+- **Blockchain**: Solana Web3.js
+- **DEX Aggregator**: Jupiter API
+- **Oracle**: Pyth Network
+- **Icons**: Lucide React & local SVG assets
 
-## What's Included
-
-- **Wallet connection** via `@solana/react-hooks` with auto-discovery
-- **SOL Vault program** - deposit and withdraw SOL from a personal PDA vault
-- **Codama-generated client** - type-safe program interactions using `@solana/kit`
-- **Tailwind CSS v4** with light/dark mode
-
-## Stack
-
-| Layer          | Technology                              |
-| -------------- | --------------------------------------- |
-| Frontend       | Next.js 16, React 19, TypeScript        |
-| Styling        | Tailwind CSS v4                         |
-| Solana Client  | `@solana/client`, `@solana/react-hooks` |
-| Program Client | Codama-generated, `@solana/kit`         |
-| Program        | Anchor (Rust)                           |
-
-## Project Structure
-
-```
-├── app/
-│   ├── components/
-│   │   ├── providers.tsx      # Solana client setup
-│   │   └── vault-card.tsx     # Vault deposit/withdraw UI
-│   ├── generated/vault/       # Codama-generated program client
-│   └── page.tsx               # Main page
-├── anchor/                    # Anchor workspace
-│   └── programs/vault/        # Vault program (Rust)
-└── codama.json                # Codama client generation config
-```
-
-## Deploy Your Own Vault
-
-The included vault program is already deployed to devnet. To deploy your own:
+## 📦 Getting Started
 
 ### Prerequisites
 
-- [Rust](https://rustup.rs/)
-- [Solana CLI](https://solana.com/docs/intro/installation)
-- [Anchor](https://www.anchor-lang.com/docs/installation)
+- Node.js 18+
+- A Solana wallet (Phantom or Solflare) configured to **Devnet**.
 
-### Steps
+### Installation
 
-1. **Configure Solana CLI for devnet**
-
+1. Clone the repository:
    ```bash
-   solana config set --url devnet
+   git clone https://github.com/wayphantomme/pool-finance.git
+   cd pool-finance
    ```
 
-2. **Create a wallet (if needed) and fund it**
-
+2. Install dependencies:
    ```bash
-   solana-keygen new
-   solana airdrop 2
+   npm install
    ```
 
-3. **Build and deploy the program**
-
+3. Run the development server:
    ```bash
-   cd anchor
-   anchor build
-   anchor keys sync    # Updates program ID in source
-   anchor build        # Rebuild with new ID
-   anchor deploy
-   cd ..
-   ```
-
-4. **Regenerate the client and restart**
-   ```bash
-   npm run setup   # Rebuilds program and regenerates client
    npm run dev
    ```
 
-## Testing
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-Tests use [LiteSVM](https://github.com/LiteSVM/litesvm), a fast lightweight Solana VM for testing.
+## 🌐 Network
 
-```bash
-npm run anchor-build   # Build the program first
-npm run anchor-test    # Run tests
-```
+This application is currently configured for **Solana Devnet**. Ensure your wallet is switched to Devnet to interact with the swap and vault features.
 
-The tests are in `anchor/programs/vault/src/tests.rs` and automatically use the program ID from `declare_id!`.
+## 📄 License
 
-## Regenerating the Client
-
-If you modify the program, regenerate the TypeScript client:
-
-```bash
-npm run setup   # Or: npm run anchor-build && npm run codama:js
-```
-
-This uses [Codama](https://github.com/codama-idl/codama) to generate a type-safe client from the Anchor IDL.
-
-## Learn More
-
-- [Solana Docs](https://solana.com/docs) - core concepts and guides
-- [Anchor Docs](https://www.anchor-lang.com/docs) - program development framework
-- [Deploying Programs](https://solana.com/docs/programs/deploying) - deployment guide
-- [framework-kit](https://github.com/solana-foundation/framework-kit) - the React hooks used here
-- [Codama](https://github.com/codama-idl/codama) - client generation from IDL
+MIT

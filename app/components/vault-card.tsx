@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
+import { useWallet } from "@solana/wallet-adapter-react";
 import {
-  useWalletConnection,
   useSendTransaction,
   useBalance,
 } from "@solana/react-hooks";
@@ -10,6 +10,7 @@ import {
   getProgramDerivedAddress,
   getAddressEncoder,
   getBytesEncoder,
+  address,
   type Address,
 } from "@solana/kit";
 import {
@@ -22,14 +23,15 @@ const LAMPORTS_PER_SOL = 1_000_000_000n;
 const SYSTEM_PROGRAM_ADDRESS = "11111111111111111111111111111111" as Address;
 
 export function VaultCard() {
-  const { wallet, status } = useWalletConnection();
+  const { publicKey, connected } = useWallet();
   const { send, isSending } = useSendTransaction();
 
   const [amount, setAmount] = useState("");
   const [vaultAddress, setVaultAddress] = useState<Address | null>(null);
   const [txStatus, setTxStatus] = useState<string | null>(null);
 
-  const walletAddress = wallet?.account.address;
+  const status = connected ? "connected" : "disconnected";
+  const walletAddress = publicKey ? publicKey.toString() : undefined;
 
   // Derive vault PDA when wallet connects
   useEffect(() => {
@@ -43,7 +45,7 @@ export function VaultCard() {
         programAddress: VAULT_PROGRAM_ADDRESS,
         seeds: [
           getBytesEncoder().encode(new Uint8Array([118, 97, 117, 108, 116])), // "vault"
-          getAddressEncoder().encode(walletAddress),
+          getAddressEncoder().encode(address(walletAddress)),
         ],
       });
 
@@ -72,7 +74,7 @@ export function VaultCard() {
       const instruction = {
         programAddress: VAULT_PROGRAM_ADDRESS,
         accounts: [
-          { address: walletAddress, role: 3 }, // WritableSigner (3 = writable + signer)
+          { address: address(walletAddress), role: 3 }, // WritableSigner (3 = writable + signer)
           { address: vaultAddress, role: 1 }, // Writable (1 = writable)
           { address: SYSTEM_PROGRAM_ADDRESS, role: 0 }, // Readonly (0 = readonly)
         ],
@@ -107,7 +109,7 @@ export function VaultCard() {
       const instruction = {
         programAddress: VAULT_PROGRAM_ADDRESS,
         accounts: [
-          { address: walletAddress, role: 3 }, // WritableSigner
+          { address: address(walletAddress), role: 3 }, // WritableSigner
           { address: vaultAddress, role: 1 }, // Writable
           { address: SYSTEM_PROGRAM_ADDRESS, role: 0 }, // Readonly
         ],

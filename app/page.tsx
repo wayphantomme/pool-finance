@@ -1,159 +1,64 @@
-"use client";
-import { useWalletConnection } from "@solana/react-hooks";
-import { VaultCard } from "./components/vault-card";
+import { Navbar } from "./components/Navbar";
+import Link from "next/link";
 
 export default function Home() {
-  const { connectors, connect, disconnect, wallet, status } =
-    useWalletConnection();
-
-  const address = wallet?.account.address.toString();
-
   return (
-    <div className="relative min-h-screen overflow-x-clip bg-bg1 text-foreground">
-      <main className="relative z-10 mx-auto flex min-h-screen max-w-4xl flex-col gap-10 border-x border-border-low px-6 py-16">
-        <header className="space-y-3">
-          <p className="text-sm uppercase tracking-[0.18em] text-muted">
-            Solana starter kit
-          </p>
-          <h1 className="text-3xl font-semibold tracking-tight text-foreground">
-            Ship a Solana dapp fast
-          </h1>
-          <p className="max-w-3xl text-base leading-relaxed text-muted">
-            Drop in <code className="font-mono">@solana/react-hooks</code>, wrap
-            your tree once, and you get wallet connect/disconnect plus
-            ready-to-use hooks for balances and transactions—no manual RPC
-            wiring.
-          </p>
-          <ul className="mt-4 space-y-2 text-sm text-foreground">
-            <li className="flex gap-2">
-              <span
-                className="mt-1.5 h-2 w-2 rounded-full bg-foreground/60"
-                aria-hidden
-              />
-              <div>
-                <a
-                  className="font-medium underline underline-offset-2"
-                  href="https://solana.com/docs"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Solana docs
-                </a>{" "}
-                — core concepts, RPC, programs, and client patterns.
-              </div>
-            </li>
-            <li className="flex gap-2">
-              <span
-                className="mt-1.5 h-2 w-2 rounded-full bg-foreground/60"
-                aria-hidden
-              />
-              <div>
-                <a
-                  className="font-medium underline underline-offset-2"
-                  href="https://www.anchor-lang.com/docs/introduction"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Anchor docs
-                </a>{" "}
-                — build and test programs with IDL, macros, and type-safe
-                clients.
-              </div>
-            </li>
-            <li className="flex gap-2">
-              <span
-                className="mt-1.5 h-2 w-2 rounded-full bg-foreground/60"
-                aria-hidden
-              />
-              <div>
-                <a
-                  className="font-medium underline underline-offset-2"
-                  href="https://faucet.solana.com/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Solana faucet (devnet)
-                </a>{" "}
-                — grab free devnet SOL to try transfers and transactions.
-              </div>
-            </li>
-            <li className="flex gap-2">
-              <span
-                className="mt-1.5 h-2 w-2 rounded-full bg-foreground/60"
-                aria-hidden
-              />
-              <div>
-                <a
-                  className="font-medium underline underline-offset-2"
-                  href="https://github.com/solana-foundation/framework-kit/tree/main/packages/react-hooks"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  @solana/react-hooks README
-                </a>{" "}
-                — how this starter wires the client, connectors, and hooks.
-              </div>
-            </li>
-          </ul>
-        </header>
+    <div className="relative min-h-screen pt-24 overflow-x-hidden flex flex-col">
+      <Navbar hideWalletButton={true} />
 
-        <section className="w-full max-w-3xl space-y-4 rounded-2xl border border-border-low bg-card p-6 shadow-[0_20px_80px_-50px_rgba(0,0,0,0.35)]">
-          <div className="flex items-start justify-between gap-4">
-            <div className="space-y-1">
-              <p className="text-lg font-semibold">Wallet connection</p>
-              <p className="text-sm text-muted">
-                Pick any discovered connector and manage connect / disconnect in
-                one spot.
-              </p>
-            </div>
-            <span className="rounded-full bg-cream px-3 py-1 text-xs font-semibold uppercase tracking-wide text-foreground/80">
-              {status === "connected" ? "Connected" : "Not connected"}
-            </span>
+      <main className="flex-1 flex flex-col pt-16 px-6 relative z-10 w-full max-w-6xl mx-auto items-center text-center">
+        {/* Ambient Glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/20 blur-[120px] rounded-full pointer-events-none" />
+
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-8 border-primary/30">
+          <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+          <span className="text-sm font-medium text-white/80">Solana Devnet Live</span>
+        </div>
+
+        <h1 className="text-5xl md:text-7xl font-black tracking-tight mb-8 leading-[1.1]">
+          The Premium Web3 <br className="hidden md:block" />
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-indigo-400 to-sky-400 drop-shadow-lg">
+            Liquidity Protocol
+          </span>
+        </h1>
+
+        <p className="text-lg md:text-xl text-muted max-w-2xl mx-auto mb-12 leading-relaxed font-medium">
+          Swap tokens seamlessly, manage your portfolio, and earn yields with lightning-fast execution on the Solana blockchain.
+        </p>
+
+        <div className="flex flex-col sm:flex-row items-center gap-6">
+          <Link href="/dashboard" className="px-8 py-4 w-full sm:w-auto rounded-full bg-primary text-white font-bold text-lg hover:bg-primary/90 transition shadow-[0_0_30px_rgba(139,92,246,0.5)] hover:-translate-y-1 hover:shadow-[0_0_40px_rgba(139,92,246,0.7)] group">
+            Launch App
+            <span className="inline-block ml-2 group-hover:translate-x-1 transition-transform">→</span>
+          </Link>
+          <a href="#features" className="px-8 py-4 w-full sm:w-auto rounded-full bg-white/5 border border-white/10 text-white font-bold text-lg hover:bg-white/10 transition backdrop-blur-md hover:-translate-y-1">
+            Learn More
+          </a>
+        </div>
+
+        {/* Mock Stats */}
+        <div className="mt-24 grid grid-cols-2 md:grid-cols-4 gap-8 w-full border-t border-white/5 pt-12 pb-20">
+          <div className="glass rounded-3xl p-6 relative overflow-hidden group">
+            <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+            <div className="text-4xl font-black text-white mb-2 tracking-tighter">$2.4B+</div>
+            <div className="text-muted text-xs uppercase tracking-widest font-bold">Total Volume</div>
           </div>
-
-          <div className="grid gap-3 sm:grid-cols-2">
-            {connectors.map((connector) => (
-              <button
-                key={connector.id}
-                onClick={() => connect(connector.id)}
-                disabled={status === "connecting"}
-                className="group flex items-center justify-between rounded-xl border border-border-low bg-card px-4 py-3 text-left text-sm font-medium transition hover:-translate-y-0.5 hover:shadow-sm cursor-pointer disabled:cursor-not-allowed disabled:opacity-60"
-              >
-                <span className="flex flex-col">
-                  <span className="text-base">{connector.name}</span>
-                  <span className="text-xs text-muted">
-                    {status === "connecting"
-                      ? "Connecting…"
-                      : status === "connected" &&
-                          wallet?.connector.id === connector.id
-                        ? "Active"
-                        : "Tap to connect"}
-                  </span>
-                </span>
-                <span
-                  aria-hidden
-                  className="h-2.5 w-2.5 rounded-full bg-border-low transition group-hover:bg-primary/80"
-                />
-              </button>
-            ))}
+          <div className="glass rounded-3xl p-6 relative overflow-hidden group">
+            <div className="absolute inset-0 bg-sky-500/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+            <div className="text-4xl font-black text-white mb-2 tracking-tighter">100k+</div>
+            <div className="text-muted text-xs uppercase tracking-widest font-bold">Active Users</div>
           </div>
-
-          <div className="flex flex-wrap items-center gap-3 border-t border-border-low pt-4 text-sm">
-            <span className="rounded-lg border border-border-low bg-cream px-3 py-2 font-mono text-xs">
-              {address ?? "No wallet connected"}
-            </span>
-            <button
-              onClick={() => disconnect()}
-              disabled={status !== "connected"}
-              className="inline-flex items-center gap-2 rounded-lg border border-border-low bg-card px-3 py-2 font-medium transition hover:-translate-y-0.5 hover:shadow-sm cursor-pointer disabled:cursor-not-allowed disabled:opacity-60"
-            >
-              Disconnect
-            </button>
+          <div className="glass rounded-3xl p-6 relative overflow-hidden group">
+            <div className="absolute inset-0 bg-green-500/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+            <div className="text-4xl font-black text-white mb-2 tracking-tighter">&lt; 0.1s</div>
+            <div className="text-muted text-xs uppercase tracking-widest font-bold">Execution Time</div>
           </div>
-        </section>
-
-        {/* Vault Program Section */}
-        <VaultCard />
+          <div className="glass rounded-3xl p-6 relative overflow-hidden group">
+            <div className="absolute inset-0 bg-indigo-500/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+            <div className="text-4xl font-black text-white mb-2 tracking-tighter">$0.001</div>
+            <div className="text-muted text-xs uppercase tracking-widest font-bold">Avg Tx Cost</div>
+          </div>
+        </div>
       </main>
     </div>
   );
