@@ -37,9 +37,9 @@ export default function RootLayout({
         className={`${inter.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
       >
         <Providers>
-          <main className="flex-grow">
+          <div className="flex-grow flex flex-col pt-20">
             {children}
-          </main>
+          </div>
           <Footer />
         </Providers>
       </body>
