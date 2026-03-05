@@ -2,55 +2,48 @@
 
 A modern Solana dApp for token swaps and portfolio management, built with Next.js and integrated with Jupiter Aggregator.
 
-## 🚀 Features
+## Features
 
-- **Token Swap**: Seamless SOL ⇄ USDC swaps using Jupiter Quote API v6.
-- **Real-Time Pricing**: Integrated with Pyth Network oracle for live SOL/USDC price feeds.
-- **Portfolio Dashboard**: View your SOL and USDC balances with a premium, glassmorphism-inspired UI.
-- **SOL Vault**: Interact with a dedicated Solana smart contract (Vault) to deposit and withdraw SOL.
-- **Native Transfers**: Securely send SOL to any destination address.
-- **Wallet Integration**: Supports Phantom and Solflare via the Solana Wallet Adapter.
+- 🔄 **Multi-Protocol Swap**: Seamless trading via **Jupiter Aggregator** (V6) and direct **Raydium AMM** pools.
+- 📊 **Dynamic Dashboard**: Track balances for **SOL**, **dUSDC**, and **dRAY** with real-time value tracking.
+- 📈 **Pyth Oracle Integration**: Live, high-fidelity price feeds for accurate asset valuation.
+- 🏦 **Vault & Staking**: Secure on-chain SOL management and staking features.
+- 💸 **Instant Transfers**: Native SOL transfer capabilities with instant confirmation.
+- 🔐 **Wallet Support**: Fully integrated with **Phantom** and **Solflare** via Solana Wallet Adapter.
 
-## 🛠 Tech Stack
+## Tech Stack
 
-- **Frontend**: Next.js 14 (App Router)
-- **Styling**: Tailwind CSS with custom Glassmorphism effects
+- **Framework**: Next.js 14 (App Router)
+- **Styling**: Tailwind CSS + Premium Glassmorphism UI
 - **Blockchain**: Solana Web3.js
-- **DEX Aggregator**: Jupiter API
-- **Oracle**: Pyth Network
-- **Icons**: Lucide React & local SVG assets
+- **Liquidity**: Jupiter API & Raydium SDK
+- **Data Oracle**: Pyth Network
+- **Components**: Lucide React Icons
 
-## 📦 Getting Started
+## Getting Started
 
 ### Prerequisites
 
 - Node.js 18+
-- A Solana wallet (Phantom or Solflare) configured to **Devnet**.
+- Solana wallet configured to **Devnet**.
 
-### Installation
+### Quick Start
 
-1. Clone the repository:
+1. **Clone & Setup**:
    ```bash
    git clone https://github.com/wayphantomme/pool-finance.git
    cd pool-finance
-   ```
-
-2. Install dependencies:
-   ```bash
    npm install
    ```
 
-3. Run the development server:
+2. **Run Dev Server**:
    ```bash
    npm run dev
    ```
 
-4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+3. **Interact**:
+   Head to `http://localhost:3000` and connect your Devnet wallet.
 
-## 🌐 Network
+## Network
 
-This application is currently configured for **Solana Devnet**. Ensure your wallet is switched to Devnet to interact with the swap and vault features.
-
-## 📄 License
-
-MIT
+Configured for **Solana Devnet**. Ensure your wallet is switched to Devnet to interact with swaps, vaults, and dashboard features.

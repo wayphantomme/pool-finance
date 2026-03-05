@@ -14,15 +14,6 @@ export function PythPrice() {
 
             <div className="flex items-center justify-between relative z-10">
                 <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 rounded-full overflow-hidden flex items-center justify-center bg-white/5 border border-white/5 relative shadow-lg">
-                        <Image
-                            src={TOKENS[SOL_MINT].logo}
-                            alt="SOL"
-                            width={32}
-                            height={32}
-                            className="object-contain"
-                        />
-                    </div>
                     <div>
                         <div className="text-xs font-bold text-muted uppercase tracking-widest">Pyth Oracle</div>
                         <div className="text-sm font-semibold text-white">SOL / USDC</div>

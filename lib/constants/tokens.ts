@@ -13,14 +13,14 @@ export const TOKENS: Record<string, TokenInfo> = {
         mint: SOL_MINT,
         symbol: "SOL",
         name: "Solana",
-        logo: "/tokens/sol.svg",
+        logo: "https://raw.githubusercontent.com/solana-labs/token-list/main/assets/mainnet/So11111111111111111111111111111111111111112/logo.png",
         decimals: 9,
     },
     [USDC_MINT]: {
         mint: USDC_MINT,
         symbol: "USDC",
         name: "USD Coin",
-        logo: "/tokens/usdc.svg",
+        logo: "https://raw.githubusercontent.com/solana-labs/token-list/main/assets/mainnet/EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v/logo.png",
         decimals: 6,
     },
 };
