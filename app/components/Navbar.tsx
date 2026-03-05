@@ -25,12 +25,18 @@ export function Navbar({ hideWalletButton }: { hideWalletButton?: boolean }) {
                         </Link>
                     ) : (
                         <>
-                            <Link href="/swap" className="text-sm font-semibold tracking-wide text-muted hover:text-white transition-colors">
-                                Swap
-                            </Link>
                             <Link href="/dashboard" className="text-sm font-semibold tracking-wide text-muted hover:text-white transition-colors">
                                 Dashboard
                             </Link>
+                            <Link href="/swap" className="text-sm font-semibold tracking-wide text-muted hover:text-white transition-colors">
+                                Swap
+                            </Link>
+                            <Link href="/staking" className="text-sm font-semibold tracking-wide text-muted hover:text-white transition-colors">
+                                Staking
+                            </Link>
+                            <a href="https://faucet.solana.com/" target="_blank" rel="noopener noreferrer" className="text-sm font-semibold tracking-wide text-muted hover:text-white transition-colors">
+                                Faucet
+                            </a>
                             <WalletConnectButton />
                         </>
                     )}
